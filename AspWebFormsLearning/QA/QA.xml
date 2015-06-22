@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <task>
+    <question>
+      Як тебе звати?
+    </question>
+    <answer>
+      Андрій
+    </answer>
+    <wrongAnswers>
+      <value>Петро</value>
+      <value>Іван</value>
+      <value>Максим</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>
+      Скільки тобі років?
+    </question>
+    <answer>
+      10
+    </answer>
+    <wrongAnswers>
+      <value>20</value>
+      <value>30</value>
+      <value>40</value>
+    </wrongAnswers>
+  </task>
+  
+  
+</root>
