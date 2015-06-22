@@ -7,9 +7,9 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.DataProtection;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using AspWebFormsLearning.Models;
+using Millionaire.Models;
 
-namespace AspWebFormsLearning
+namespace Millionaire
 {
     public partial class Startup {
 

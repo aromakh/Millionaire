@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Xml;
-namespace AspWebFormsLearning
+namespace Millionaire
 {
     public partial class _Default : Page
     {

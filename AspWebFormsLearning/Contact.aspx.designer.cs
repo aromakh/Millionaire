@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AspWebFormsLearning
+namespace Millionaire
 {
 
 

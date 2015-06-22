@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Optimization;
 using System.Web.UI;
 
-namespace AspWebFormsLearning
+namespace Millionaire
 {
     public class BundleConfig
     {
