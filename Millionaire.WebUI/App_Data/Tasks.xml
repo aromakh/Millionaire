@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+
+  <task>
+    <question>Від кого не зміг утекти колобок?</question>
+    <answer>Від лисиці</answer>
+    <wrongAnswers>
+      <value>Від гаїшника</value>
+      <value>Від злої тещі</value>
+      <value>Від баби та діда </value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Як звали мультяшного персонажа, котрий дуже любив мед, але боявся бджіл?</question>
+    <answer>Вінні Пух</answer>
+    <wrongAnswers>
+      <value>Капітошка </value>
+      <value>Антошка</value>
+      <value>Король лев </value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Що втратила Попелюшка коли втікала від свого принца?</question>
+    <answer>Туфельку</answer>
+    <wrongAnswers>
+      <value>Босоніжок</value>
+      <value>Невинність</value>
+      <value>I-phone</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Якого кольору народився лебідь в казці “Гидке каченя” Г.К. Андерсена?</question>
+    <answer>Чорного</answer>
+    <wrongAnswers>
+      <value>Жовтого</value>
+      <value>Камуфляжного</value>
+      <value>Рожевого</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>На чому у вільний час літав Гаррі Поттер?</question>
+    <answer>На мітлі</answer>
+    <wrongAnswers>
+      <value>На килимі</value>
+      <value>На поїзді</value>
+      <value>На літаку британських авіаліній</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Що несла Червона Шапочка через темний ліс до своєї бабусі?</question>
+    <answer>Домашні пиріжки</answer>
+    <wrongAnswers>
+      <value>Італійські макарони</value>
+      <value>Французькі круасани</value>
+      <value>Німецькі хот-доги</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Яке яйце знесла бабусі та дідусю Курочка Ряба?</question>
+    <answer>Золоте</answer>
+    <wrongAnswers>
+      <value>Срібне</value>
+      <value>Страусине</value>
+      <value>Кіндер-сюрприз</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Яка частина тіла виростала у Буратіно коли він обманював?</question>
+    <answer>Ніс</answer>
+    <wrongAnswers>
+      <value>Живіт</value>
+      <value>Рука</value>
+      <value>Вухо</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Що скоштувала Білосніжка з рук старенької бабусі?</question>
+    <answer>Яблуко</answer>
+    <wrongAnswers>
+      <value>Чюпа-чупс</value>
+      <value>Ківі</value>
+      <value>Мухомор</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Що рахував Петрик П’яточкін щоб заснути?</question>
+    <answer>Слонів</answer>
+    <wrongAnswers>
+      <value>Долари</value>
+      <value>Білоруські зайчики</value>
+      <value>Кабанів</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Коли в Україні відзначають день Конституції?</question>
+    <answer>28 червня</answer>
+    <wrongAnswers>
+      <value>24 серпня</value>
+      <value>22 січня</value>
+      <value>14 жовтня</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Назвіть першу столицю радянської України серед назв цих міст?</question>
+    <answer>Харків</answer>
+    <wrongAnswers>
+      <value>Одеса</value>
+      <value>Київ</value>
+      <value>Львів</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Яка форма правління зараз діє в Україні ?</question>
+    <answer>Демократія</answer>
+    <wrongAnswers>
+      <value>Анархія</value>
+      <value>Аристократія</value>
+      <value>Геронтократія</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>В таблиці Менделеєва немає наступного елемента:</question>
+    <answer>Криптоній</answer>
+    <wrongAnswers>
+      <value>Рубідій</value>
+      <value>Стронцій</value>
+      <value>Дубній</value>
+    </wrongAnswers>
+
+  </task>
+  <task>
+    <question>Хто розпочав другу світову війну?</question>
+    <answer>Німеччина</answer>
+    <wrongAnswers>
+      <value>Росія</value>
+      <value>Польща</value>
+      <value>США</value>
+    </wrongAnswers>
+  </task>
+
+  <task>
+    <question>Яка швидкість світла?</question>
+    <answer>300 000км/с</answer>
+    <wrongAnswers>
+      <value>300км/с</value>
+      <value>30км/c</value>
+      <value>40км/c</value>
+    </wrongAnswers>
+  </task>
+</root>

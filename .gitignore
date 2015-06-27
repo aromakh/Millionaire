@@ -6,6 +6,3 @@
 *.suo
 *.user
 *.dbmdl
-*.ncrunchproject
-*_NCrunch*
-*.ncrunchsolution

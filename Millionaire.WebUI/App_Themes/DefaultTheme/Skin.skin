@@ -1,0 +1,39 @@
+﻿<%--
+Default skin template. The following skins are provided as examples only.
+
+1. Named control skin. The SkinId should be uniquely defined because
+   duplicate SkinId's per control type are not allowed in the same theme.
+
+<asp:GridView runat="server" SkinId="gridviewSkin" BackColor="White" >
+   <AlternatingRowStyle BackColor="Blue" />
+</asp:GridView>
+
+2. Default skin. The SkinId is not defined. Only one default 
+   control skin per control type is allowed in the same theme.
+
+<asp:Image runat="server" ImageUrl="~/images/image1.jpg" />
+--%>
+
+<asp:ImageButton BorderStyle="None" runat="server" CssClass="helpers btn-primary col-lg-12" />
+
+<asp:Button ForeColor="#00ffff" runat="server" CssClass="btn btn-primary btn-lg col-lg-6" />
+
+<asp:Button SkinID="FullSizeButtonSkin" ForeColor="#00ffff" runat="server" CssClass="btn btn-primary btn-lg col-lg-12" />
+
+<asp:Image SkinID="MainImage" runat="server" CssClass="main_image col-lg-6 col-lg" />
+
+<asp:Panel SkinID="FriendHelp" runat="server" CssClass="friend_help_panel col-lg-6 col-lg" />
+
+<asp:Label SkinID="QuestionSkin" runat="server" CssClass="StrongText" Font-Size="X-Large" Font-Bold="true" Text="Запитання"></asp:Label>
+
+<asp:Label SkinID="ResultSkin" runat="server"  CssClass="StrongText result_label" Font-Size="X-Large" Font-Bold="true" Text="Запитання"></asp:Label>
+
+<asp:Label SkinID="AttempsSkin" runat="server" CssClass="StrongText" ForeColor="White" Font-Size="Large" Font-Bold="true" Text="Спроби: 3"></asp:Label>
+
+<asp:TextBox runat="server" SkinID="UserNameTextSkin" ForeColor="Blue" Font-Size="Large" Font-Bold="true" CssClass="username_textbox col-lg-12"></asp:TextBox>
+
+ <asp:Table CssClass="money_panel" runat="server"></asp:Table>
+
+ <asp:Table CssClass="result_panel" SkinID="ResultTable" runat="server"></asp:Table>
+
+ <asp:TableRow CssClass="active_item" runat=server SkinID="ActiveRow" />
