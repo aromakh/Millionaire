@@ -1,7 +1,5 @@
 <?xml version="1.0"?>
 <player xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
-  <player name="Anonym" time="2015-06-27T16:10:38.5101934+03:00" />
-  <player name="Ano" time="2015-06-27T16:10:48.8273486+03:00" />
-  <player name="Ansd" time="2015-06-27T16:26:40.4473875+03:00" />
-  <player name="Петро" time="2015-06-27T17:59:24.2987271+03:00" />
+  <Player name="Anonym" time="2015-06-27T18:39:10.0439422+03:00" />
+  <Player name="Anonyms" time="2015-06-27T18:39:51.7225936+03:00" />
 </player>

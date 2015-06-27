@@ -12,70 +12,48 @@ using Millionaire.GameEngine;
 
 namespace Millionaire.WebUI
 {
-    public class player
-    {
-        [XmlAttribute]
-        public string name;
-        [XmlAttribute]
-        public DateTime time;
-    }
-
     public partial class Result : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
-        {
-
-        }
-
         protected void Page_PreRender(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 if (SessionKeys.GAME != null)
                 {
-                    var game = (GameCore)Session[SessionKeys.GAME];
-
-                    if (game != null)
-                    {
-                        if (game.IsWin)
-                        {
-                            ResultLabel.Text = "Вітаємо. Ви виграли";
-                            StoreResult();
-                        }
-                        else
-                        {
-                            ResultLabel.Text = "Наші співчуття. Ви виграли лише " 
-                                + game.MoneyBoard.GetAmount().ToString() + " гривень.";
-                        }
-                    }
+                    SetResultLabel();
                 }
             }
 
-            PrintResultsTable();
+            FillResultsTable();
+        }
+        #region Methods
+
+        private void SetResultLabel()
+        {
+            var game = (GameCore)Session[SessionKeys.GAME];
+
+            if (game != null)
+            {
+                if (game.IsWin)
+                {
+                    ResultLabel.Text = "Вітаємо. Ви виграли";
+                    StoreResult();
+                }
+                else
+                {
+                    ResultLabel.Text = "Наші співчуття. Ви виграли лише "
+                        + game.MoneyBoard.GetAmount().ToString() + " гривень.";
+                }
+            }
         }
 
-        private void PrintResultsTable()
+        private void FillResultsTable()
         {
             Dictionary<string, DateTime> dict;
 
-            XmlSerializer serializer = new XmlSerializer(typeof(player[]),
-                new XmlRootAttribute() { ElementName = "player" });
+            dict = LoadFromXML();
 
-            using (Stream stream = new FileStream(Server.MapPath("~/App_Data/Results.xml"),
-                FileMode.Open))
-            {
-                try
-                {
-                    dict = ((player[])serializer.Deserialize(stream))
-                        .ToDictionary(i => i.name, i => i.time);
-                }
-                catch
-                {
-                    dict = new Dictionary<string, DateTime>();
-                }
-            }
-
-            int iterator = 0;
+            int itemsCount = 0;
             foreach (var player in dict.Keys.Reverse<string>())
             {
                 TableCell amountCell = new TableCell();
@@ -85,20 +63,18 @@ namespace Millionaire.WebUI
                 amountRow.Cells.Add(amountCell);
                 ResultTable.Rows.Add(amountRow);
 
-                iterator++;
-
-                if (iterator >= 10)
+                itemsCount++;
+                if (itemsCount >= 10)
                 {
                     return;
                 }
             }
         }
 
-        private void StoreResult()
+        private Dictionary<string, DateTime> LoadFromXML()
         {
             Dictionary<string, DateTime> dict;
-
-            XmlSerializer serializer = new XmlSerializer(typeof(player[]),
+            XmlSerializer serializer = new XmlSerializer(typeof(Player[]),
                 new XmlRootAttribute() { ElementName = "player" });
 
             using (Stream stream = new FileStream(Server.MapPath("~/App_Data/Results.xml"),
@@ -106,7 +82,31 @@ namespace Millionaire.WebUI
             {
                 try
                 {
-                    dict = ((player[])serializer.Deserialize(stream))
+                    dict = ((Player[])serializer.Deserialize(stream))
+                        .ToDictionary(i => i.name, i => i.time);
+                }
+                catch
+                {
+                    dict = new Dictionary<string, DateTime>();
+                }
+            }
+            return dict;
+        }
+
+        private void StoreResult()
+        {
+            Dictionary<string, DateTime> dict;
+
+            XmlSerializer serializer = new XmlSerializer(typeof(Player[]),
+                new XmlRootAttribute() { ElementName = "player" });
+
+            using (Stream stream =
+                new FileStream(Server.MapPath("~/App_Data/Results.xml"),
+                    FileMode.Open))
+            {
+                try
+                {
+                    dict = ((Player[])serializer.Deserialize(stream))
                         .ToDictionary(i => i.name, i => i.time);
                 }
                 catch
@@ -115,7 +115,6 @@ namespace Millionaire.WebUI
                 }
 
                 AddResults(dict);
-
                 stream.Close();
 
                 SaveResults(dict, serializer);
@@ -124,7 +123,8 @@ namespace Millionaire.WebUI
 
         private void AddResults(Dictionary<string, DateTime> dict)
         {
-            if ((string)Session[SessionKeys.USER_NAME] != null)
+            if (SessionKeys.USER_NAME != null
+                && (string)Session[SessionKeys.USER_NAME] != null)
             {
                 if (dict.ContainsKey((string)Session[SessionKeys.USER_NAME]))
                 {
@@ -141,10 +141,12 @@ namespace Millionaire.WebUI
             FileMode.Create))
             {
                 serializer.Serialize(cleanStream,
-                    dict.Select(kv => new player() { name = kv.Key, time = kv.Value }).ToArray());
+                    dict.Select(player => new Player() { name = player.Key, time = player.Value }).ToArray());
             }
-        }
+        } 
+        #endregion
 
+        #region ClickEvents Methods
         protected void Try_Again_Click(object sender, EventArgs e)
         {
             if (SessionKeys.GAME != null)
@@ -153,6 +155,7 @@ namespace Millionaire.WebUI
             }
 
             Response.Redirect("~/Game.aspx");
-        }
+        } 
+        #endregion
     }
 }

@@ -99,6 +99,7 @@
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="Code\Keys\SessionKeys.cs" />
+    <Compile Include="Code\Player.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -25,31 +25,30 @@
                 <asp:Panel Visible="false" ID="FriendHelpPanel" runat="server" SkinID="FriendHelp" CssClass="container">
                     <asp:Label runat="server">Ваша пошта:</asp:Label>
 
-                    <asp:TextBox ID="MyMailTextBox" SkinID="UserNameTextSkin" TextMode="Email" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="MyMailTextBox" SkinID="UserNameTextSkin" TextMode="Email" runat="server"></asp:TextBox>
 
                     <asp:RegularExpressionValidator ID="RegularExpressionValidator1" runat="server"
-                        ErrorMessage="Має бути вигляду: name@gmail.com"  ControlToValidate="MyMailTextBox"
+                        ErrorMessage="Має бути вигляду: name@gmail.com" ControlToValidate="MyMailTextBox"
                         ValidationExpression="^[a-zA-Z]+@gmail\.com$"
                         ForeColor="Red" Display="Dynamic" />
 
-                    <asp:TextBox ID="MyMailPassword" SkinID="UserNameTextSkin" TextMode="Password" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="MyMailPassword" SkinID="UserNameTextSkin" TextMode="Password" runat="server"></asp:TextBox>
 
                     <div class="row"></div>
                     <asp:Label runat="server">Пошта друга:</asp:Label>
 
-                    <asp:TextBox ID="FriendMailTextBox" SkinID="UserNameTextSkin" TextMode="Email" runat="server" ></asp:TextBox>
+                    <asp:TextBox ID="FriendMailTextBox" SkinID="UserNameTextSkin" TextMode="Email" runat="server"></asp:TextBox>
 
                     <asp:RegularExpressionValidator ID="revUserName" runat="server"
-                        ErrorMessage="Має бути вигляду: name@email.com"  ControlToValidate="FriendMailTextBox"
+                        ErrorMessage="Має бути вигляду: name@email.com" ControlToValidate="FriendMailTextBox"
                         ValidationExpression="^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$"
                         ForeColor="Red" Display="Dynamic" />
 
-                    <div class="row"> 
+                    <div class="row">
                         <hr />
-
                     </div>
 
-                    <asp:Button SkinID="FullSizeButtonSkin" OnClick="Send_Mail_Click" Text="Надіслати другові" runat="server"/>
+                    <asp:Button SkinID="FullSizeButtonSkin" OnClick="Send_Mail_Click" Text="Надіслати другові" runat="server" />
 
                 </asp:Panel>
 

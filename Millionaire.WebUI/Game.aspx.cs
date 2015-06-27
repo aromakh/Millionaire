@@ -16,43 +16,44 @@ namespace Millionaire.WebUI
     public partial class Game : System.Web.UI.Page
     {
 
-        private GameCore _game;
+        #region Fields
+        private GameCore _game; 
+        #endregion
 
+        #region PageEvents Methods
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session[SessionKeys.GAME] == null)
+            if (SessionKeys.GAME != null)
             {
-                _game = new GameCore(Server.MapPath("~/App_Data/Tasks.xml"));
-                _game.LoadFromXml();
-                _game.UpdateCurrentTask();
-                Session[SessionKeys.GAME] = _game;
-            }
-            else
-            {
-                _game = (GameCore)Session[SessionKeys.GAME];
+                if (Session[SessionKeys.GAME] == null)
+                {
+                    _game = new GameCore(Server.MapPath("~/App_Data/Tasks.xml"));
+                    _game.LoadFromXml();
+                    _game.UpdateCurrentTask();
+                    Session[SessionKeys.GAME] = _game;
+                }
+                else
+                {
+                    _game = (GameCore)Session[SessionKeys.GAME];
+                }
+
+                if (_game.FiftyFiftyUsed)
+                {
+                    A.Visible = true;
+                    B.Visible = true;
+                    C.Visible = true;
+                    D.Visible = true;
+                }
             }
         }
 
         protected void Page_PreRender(object sender, EventArgs e)
         {
             LoadData();
-        }
+        } 
+        #endregion
 
-        private void LoadData()
-        {
-            A.Text = _game.AnswerVariants[0];
-            B.Text = _game.AnswerVariants[1];
-            C.Text = _game.AnswerVariants[2];
-            D.Text = _game.AnswerVariants[3];
-
-            FiftyFifty.Visible = !_game.FiftyFiftyUsed;
-            CallFriend.Visible = !_game.FriendHelpUsed;
-            PeopleHelp.Visible = !_game.PeopleHelpUsed;
-
-            Question.Text = _game.GetCurrentTask().Question;
-            Attemps.Text = "Спроби:" + _game.Attempts.ToString();
-        }
-
+        #region ClickEvents Methods
         protected void Click(object sender, EventArgs e)
         {
             CheckAnswer(((Button)sender).Text);
@@ -62,34 +63,29 @@ namespace Millionaire.WebUI
         {
             var question = _game.GetCurrentTask().Question;
 
-            ClientScript.RegisterStartupScript(this.GetType(), "window.open", "window.open('https://www.google.com.ua/search?q=" + question + "')", true);
+            ClientScript.RegisterStartupScript(this.GetType(),
+                "window.open", 
+                "window.open('https://www.google.com.ua/search?q=" + question + "')", 
+                true);
+
             _game.PeopleHelp();
         }
 
-
         protected void Send_Mail_Click(object sender, EventArgs e)
         {
-            if (Page.IsValid 
-                && MyMailTextBox.Text != string.Empty 
+            if (Page.IsValid
+                && MyMailTextBox.Text != string.Empty
                 && FriendMailTextBox.Text != string.Empty)
             {
                 SmtpClient smtpClient = new SmtpClient("smtp.gmail.com", 587);
 
-                smtpClient.Credentials = new System.Net.NetworkCredential(MyMailTextBox.Text, MyMailPassword.Text);
+                smtpClient.Credentials = 
+                    new System.Net.NetworkCredential(MyMailTextBox.Text, 
+                        MyMailPassword.Text);
+
                 smtpClient.EnableSsl = true;
 
-                MailMessage mail = new MailMessage();
-
-                mail.Subject = "Допоможи виграми мільйон!";
-                mail.Body = "Привіт. Я намагаюсь виграти мільйон гривень. Допоможи підказкою до наступного запитання:"
-                    + _game.GetCurrentTask().Question + "\n"
-                    + "Можливі варіанти відповіді:" + "\n"
-                    + A.Text + "\n"
-                    + B.Text + "\n"
-                    + C.Text + "\n"
-                    + D.Text + "\n";
-                mail.From = new MailAddress(MyMailTextBox.Text);
-                mail.To.Add(new MailAddress(FriendMailTextBox.Text));
+                MailMessage mail = CreateMail();
 
                 smtpClient.Send(mail);
 
@@ -101,6 +97,25 @@ namespace Millionaire.WebUI
                 FriendHelpPanel.Visible = false;
                 MainLogoImage.Visible = true;
             }
+        }
+
+        private MailMessage CreateMail()
+        {
+            MailMessage mail = new MailMessage();
+
+            mail.Subject = "Допоможи виграми мільйон!";
+            mail.Body = "Привіт. Я намагаюсь виграти мільйон гривень."
+                + "Допоможи підказкою до наступного запитання:"
+                + _game.GetCurrentTask().Question + "\n"
+                + "Можливі варіанти відповіді:" + "\n"
+                + A.Text + "\n"
+                + B.Text + "\n"
+                + C.Text + "\n"
+                + D.Text + "\n";
+
+            mail.From = new MailAddress(MyMailTextBox.Text);
+            mail.To.Add(new MailAddress(FriendMailTextBox.Text));
+            return mail;
         }
 
         protected void Call_Friend_Click(object sender, EventArgs e)
@@ -127,6 +142,24 @@ namespace Millionaire.WebUI
         protected void Get_Money_Click(object sender, EventArgs e)
         {
             ToResult();
+        } 
+        #endregion
+
+        #region Methods
+        private void LoadData()
+        {
+            A.Text = _game.AnswerVariants[0];
+            B.Text = _game.AnswerVariants[1];
+            C.Text = _game.AnswerVariants[2];
+            D.Text = _game.AnswerVariants[3];
+
+            FiftyFifty.Visible = !_game.FiftyFiftyUsed;
+            CallFriend.Visible = !_game.FriendHelpUsed;
+            PeopleHelp.Visible = !_game.PeopleHelpUsed;
+
+            Question.Text = _game.GetCurrentTask().Question;
+            Attemps.Text = "Спроби:" + _game.Attempts.ToString();
+
         }
 
         private void CheckAnswer(String answer)
@@ -152,8 +185,9 @@ namespace Millionaire.WebUI
         }
 
         private void ToResult()
-        {          
+        {
             Response.Redirect("~/Result.aspx");
-        }
+        } 
+        #endregion
     }
 }
